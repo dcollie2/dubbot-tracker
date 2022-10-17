@@ -7,10 +7,13 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Scans</h1>
+<!--    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="file_input">Upload file</label>-->
+<!--    <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">-->
+
     <%= form_tag import_csv_scans_path, multipart: true do %>
-      <label class="block">
-        <%= file_field_tag :scan_file, class: "mt-1 inline" %>
-        <%= submit_tag :upload_scans, class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline font-medium" %>
+      <label class="flex">
+        <%= file_field_tag :scan_file, class: "block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
+        <%= submit_tag :upload, class: "text-sm rounded-lg py-3 px-5 bg-blue-600 text-white" %>
       </label>
     <% end %>
 
