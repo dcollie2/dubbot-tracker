@@ -1,0 +1,41 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Scans</h1>
+    <%= form_tag import_csv_scans_path, multipart: true do %>
+      <label class="block">
+        <%= file_field_tag :scan_file, class: "mt-1 inline" %>
+        <%= submit_tag :upload_scans, class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline font-medium" %>
+      </label>
+    <% end %>
+
+  </div>
+
+  <div id="scans">
+    <table class='table-auto'>
+      <thead>
+      <tr>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Batch</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Dubbot Id</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Name</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Pages</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Score</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Broken Links</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Accessibility Issues</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Misspellings</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Flagged Words</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Last Crawled On</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white"></th>
+      </tr>
+      </thead>
+      <tbody>
+        <%= render @scans %>
+      </tbody>
+    </table>
+  </div>
+</div>

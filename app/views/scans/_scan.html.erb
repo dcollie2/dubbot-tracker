@@ -1,0 +1,44 @@
+<tr id="<%= dom_id scan %>" class="odd:bg-gray-100 hover:bg-stone-100">
+  <td>
+    <%= scan.batch_number %>
+  </td>
+  <td>
+    <%= scan.site.dubbot_id %>
+  </td>
+  <td>
+    <%= scan.site.name %>
+  </td>
+  <td>
+    <%= scan.pages %>
+  </td>
+
+  <td>
+    <%= scan.overall_score %>
+  </td>
+
+  <td>
+    <%= scan.broken_links %>
+  </td>
+
+  <td>
+    <%= scan.accessibility_issues %>
+  </td>
+
+  <td>
+    <%= scan.misspellings %>
+  </td>
+
+  <td>
+    <%= scan.flagged_words %>
+  </td>
+
+  <td>
+    <%= scan.last_crawled_on if scan.last_crawled_on.present? %>
+  </td>
+
+  <% if action_name != "show" %>
+    <td>
+    <%= link_to 'Edit', edit_scan_path(scan), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    </td>
+  <% end %>
+</tr>

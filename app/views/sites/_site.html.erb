@@ -1,0 +1,22 @@
+<tr id="<%= dom_id site %>" class="odd:bg-gray-100 hover:bg-stone-100">
+  <td>
+    <%= site.system_name %>
+  </td>
+  <td>
+    <%= site.dubbot_id %>
+  </td>
+  <td>
+    <%= link_to site.name,site_path(site) %>
+  </td>
+  <td>
+    <%= site.url %>
+  </td>
+  <td>
+    <%= site.scans.size %>
+  </td>
+  <% if action_name != "show" %>
+    <td>
+      <%= link_to 'Edit', edit_site_path(site), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    </td>
+  <% end %>
+</tr>
