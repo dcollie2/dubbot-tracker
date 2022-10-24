@@ -1,7 +1,9 @@
 <tr id="<%= dom_id site %>" class="odd:bg-gray-100 hover:bg-stone-100">
-  <td>
-    <%= site.system_name %>
-  </td>
+  <% unless controller_name == 'systems' %>
+    <td>
+      <%= site.system_name %>
+    </td>
+  <% end %>
   <td>
     <%= site.dubbot_id %>
   </td>
