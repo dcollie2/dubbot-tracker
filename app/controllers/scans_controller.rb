@@ -40,6 +40,10 @@ class ScansController < ApplicationController
       file = params[:scan_file]
       CSV.foreach(file, headers: true) do |row|
         scans << row.to_h
+        if row['Name'] == 'CHSS - College of Humanities and Social Sciences'
+          puts row.to_h
+          puts "batch_number, pages: #{row['Pages']}, overall_score: #{row['Overall Score']}, accessibility_issues: scan['Accessibility Issues'], broken_links: scan['Broken Links'], misspellings: scan['Misspellings'], flagged_words: scan['Flagged Words'])"
+        end
       end
       Scan.import_scans(scans)
       redirect_to scans_path, notice: "File uploaded"

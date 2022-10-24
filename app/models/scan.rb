@@ -15,7 +15,7 @@ class Scan < ApplicationRecord
         # find or create site by dubbot_id
         site = Site.find_or_create_by(dubbot_id: scan['ID'])
         site.update(name: scan['Name'])
-        site.scans.create(batch_number: batch_number, pages: scan['Pages'], overall_score: scan['Overall Score'], accessibility_issues: scan['Accessibility Issues'], broken_links: scan['Broken Links'], misspellings: scan['Misspellings'], flagged_words: scan['Flagged Words'])
+        site.scans.create(batch_number: batch_number, pages: scan['Pages'].gsub(',','').to_i, overall_score: scan['Overall Score'].to_i, accessibility_issues: scan['Accessibility Issues'].gsub(',','').to_i, broken_links: scan['Broken Links'].gsub(',','').to_i, misspellings: scan['Misspellings'].gsub(',','').to_i, flagged_words: scan['Flagged Words'].gsub(',','').to_i)
       end
     end
   end
