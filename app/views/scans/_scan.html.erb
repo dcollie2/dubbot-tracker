@@ -1,47 +1,38 @@
-<tr id="<%= dom_id scan %>" class="odd:bg-gray-100 hover:bg-stone-100">
-  <td>
+<tr id="<%= dom_id scan %>" class="odd:bg-gray-500 hover:bg-stone-100">
+  <td class="py-3 px-6">
     <%= scan.batch_number %>
   </td>
-  <td>
+  <td class="py-3 px-6">
     <%= scan.size_grouping %>
   </td>
-  <td>
-    <%= scan.site.dubbot_id %>
-  </td>
-  <td>
+<!--  <td class="py-3 px-6">-->
+    <%#= scan.site.dubbot_id %>
+<!--  </td>-->
+  <td class="py-3 px-6">
     <%= scan.site.name %>
   </td>
-  <td>
+  <td class="py-3 px-6">
     <%= scan.pages %>
   </td>
-
-  <td>
+  <td class="py-3 px-6">
     <%= scan.overall_score %>
   </td>
-
-  <td>
+  <td class="py-3 px-6">
     <%= scan.broken_links %>
   </td>
-
-  <td>
+  <td class="py-3 px-6">
     <%= scan.accessibility_issues %>
   </td>
-
-  <td>
+  <td class="py-3 px-6">
     <%= scan.misspellings %>
   </td>
-
-  <td>
-    <%= scan.flagged_words %>
-  </td>
-
-  <td>
+<!--  <td class="py-3 px-6">-->
+    <%#= scan.flagged_words %>
+<!--  </td>-->
+  <td class="py-3 px-6">
     <%= scan.last_crawled_on if scan.last_crawled_on.present? %>
   </td>
-
-  <% if action_name != "show" %>
-    <td>
+  <td class="py-3 px-6">
     <%= link_to 'Edit', edit_scan_path(scan), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    </td>
-  <% end %>
+  </td>
 </tr>

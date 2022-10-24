@@ -9,6 +9,9 @@
     <%= system.notes %>
   </td>
   <td class="py-4 px-6">
-    <%= link_to 'Edit', edit_system_path(system), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit', edit_system_path(system),                   class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to 'Destroy', system_path(system), method: :delete, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    </div>
   </td>
 </tr>

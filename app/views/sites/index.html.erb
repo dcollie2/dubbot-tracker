@@ -8,7 +8,7 @@
     <%= link_to 'New site', new_site_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id='sites'>
+  <div id='sites' class="mt-5">
     <%= render partial: 'sites', locals: { sites: @sites } %>
   </div>
 </div>
