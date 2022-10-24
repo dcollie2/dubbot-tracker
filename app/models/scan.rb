@@ -15,10 +15,17 @@ class Scan < ApplicationRecord
         # find or create site by dubbot_id
         site = Site.find_or_create_by(dubbot_id: scan['ID'])
         site.update(name: scan['Name'])
-        site.scans.create(batch_number: batch_number, pages: scan['Pages'].gsub(',','').to_i, overall_score: scan['Overall Score'].to_i, accessibility_issues: scan['Accessibility Issues'].gsub(',','').to_i, broken_links: scan['Broken Links'].gsub(',','').to_i, misspellings: scan['Misspellings'].gsub(',','').to_i, flagged_words: scan['Flagged Words'].gsub(',','').to_i)
+        site.scans.create(batch_number: batch_number, pages: cleanse_number(scan, 'Pages'), overall_score: cleanse_number(scan, 'Overall Score'), accessibility_issues: cleanse_number(scan, 'Accessibility Issues'), broken_links: cleanse_number(scan, 'Broken Links'), misspellings: cleanse_number(scan, 'Misspellings'), flagged_words: cleanse_number(scan, 'Flagged Words'))
       end
     end
+
+    def cleanse_number(scan, value)
+      scan[value].gsub(',','').to_i if scan[value].present?
+    end
+
   end
+
+
 
   scope :most_recent, -> { where(batch_number: self.most_recent_batch) }
 
@@ -37,5 +44,6 @@ class Scan < ApplicationRecord
       6
     end
   end
+
 
 end
