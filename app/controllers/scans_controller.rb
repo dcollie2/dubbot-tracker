@@ -3,7 +3,7 @@ class ScansController < ApplicationController
   require 'csv'
   # GET /scans or /scans.json
   def index
-    @scans = Scan.all
+    @scans = Scan.most_recent.order(overall_score: :desc).sort_by(&:size_grouping)
   end
 
   # GET /scans/1 or /scans/1.json

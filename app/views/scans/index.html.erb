@@ -24,6 +24,7 @@
       <thead>
       <tr>
         <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Batch</th>
+        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Size Grouping</th>
         <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Dubbot Id</th>
         <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Name</th>
         <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Pages</th>
@@ -37,7 +38,9 @@
       </tr>
       </thead>
       <tbody>
-        <%= render @scans %>
+        <% @scans.group_by { |s| s.size_grouping }.each do |size_grouping, scans| %>
+          <%= render scans, size_grouping: size_grouping %>
+        <% end %>
       </tbody>
     </table>
   </div>
