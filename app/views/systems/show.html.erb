@@ -14,5 +14,9 @@
 
     <%= render partial: 'sites/sites', locals: { sites: @system.sites } %>
 
+
+    <%= render partial: 'scans/scans', locals: { scans: @system.scans.most_recent } %>
+
+
   </div>
 </div>

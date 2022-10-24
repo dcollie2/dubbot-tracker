@@ -28,6 +28,7 @@ class Scan < ApplicationRecord
 
 
   scope :most_recent, -> { where(batch_number: self.most_recent_batch) }
+  scope :in_system, ->  (system_id) { where(system_id: system_id)}
 
   def size_grouping
     if pages > 1000
