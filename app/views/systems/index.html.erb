@@ -9,6 +9,30 @@
   </div>
 
   <div id="systems" class="min-w-full">
-    <%= render @systems %>
+
+    <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="py-3 px-6">
+            System name
+          </th>
+          <th scope="col" class="py-3 px-6">
+            Site Count
+          </th>
+          <th scope="col" class="py-3 px-6">
+            Notes
+          </th>
+          <th scope="col" class="py-3 px-6">
+            Tools
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+          <%= render @systems %>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>

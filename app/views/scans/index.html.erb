@@ -19,29 +19,31 @@
 
   </div>
 
-  <div id="scans">
-    <table class='table-auto'>
-      <thead>
-      <tr>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Batch</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Size Grouping</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Dubbot Id</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Name</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Pages</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Score</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Broken Links</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Accessibility Issues</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Misspellings</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Flagged Words</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white">Last Crawled On</th>
-        <th class="font-bold p-2 border-b text-left bg-indigo-700 text-white"></th>
-      </tr>
-      </thead>
-      <tbody>
-        <% @scans.group_by { |s| s.size_grouping }.each do |size_grouping, scans| %>
-          <%= render scans, size_grouping: size_grouping %>
-        <% end %>
-      </tbody>
-    </table>
+  <div id="scans" class="min-w-full">
+    <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th class="py-3 px-6">Batch</th>
+          <th class="py-3 px-6">Size Grouping</th>
+          <th class="py-3 px-6">Dubbot Id</th>
+          <th class="py-3 px-6">Name</th>
+          <th class="py-3 px-6">Pages</th>
+          <th class="py-3 px-6">Score</th>
+          <th class="py-3 px-6">Broken Links</th>
+          <th class="py-3 px-6">Accessibility Issues</th>
+          <th class="py-3 px-6">Misspellings</th>
+          <th class="py-3 px-6">Flagged Words</th>
+          <th class="py-3 px-6">Last Crawled On</th>
+          <th class="py-3 px-6"></th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @scans.group_by { |s| s.size_grouping }.each do |size_grouping, scans| %>
+            <%= render scans, size_grouping: size_grouping %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

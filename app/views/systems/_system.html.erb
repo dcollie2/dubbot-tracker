@@ -1,17 +1,14 @@
-<div id="<%= dom_id system %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= system.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Notes:</strong>
+<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+    <%= link_to system.name, system %>
+  </th>
+  <td class="py-4 px-6">
+    <%= system.sites.size %>
+  </td>
+  <td class="py-4 px-6">
     <%= system.notes %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this system", system, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this system', edit_system_path(system), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+  </td>
+  <td class="py-4 px-6">
+    <%= link_to 'Edit', edit_system_path(system), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+  </td>
+</tr>
