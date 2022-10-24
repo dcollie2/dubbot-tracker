@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :systems
   resources :sites
   resources :scans do
     collection do
