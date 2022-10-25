@@ -1,28 +1,31 @@
-<div class="mx-auto md:w-2/3 w-full flex">
+<div class="w-full">
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <table class="table-auto">
-      <thead>
-        <tr>
-          <th>test</th>
-          <th>test</th>
-          <th>test</th>
-          <th>test</th>
-          <th>test</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @site %>
-      </tbody>
-    </table>
+    <h1 class="font-bold text-2xl"><%= link_to "Sites", sites_path %></h1>
+    <h2 class="font-bold text-4xl text-blue-500"><%= @site.name %></h2>
+    <dl class="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700 mt-5">
+      <div class="flex flex-col pb-3">
+        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">System</dt>
+        <dd class="text-lg font-semibold"><%= @site.system_name || "No system identified" %></dd>
+      </div>
+      <% if @site.url.present? %>
+        <div class="flex flex-col py-3">
+          <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">URL</dt>
+          <dd class="text-lg font-semibold"><%= @site.url %></dd>
+        </div>
+      <% end %>
+    </dl>
 
-    <%= link_to 'Edit this site', edit_site_path(@site), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit', edit_site_path(@site), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
-      <%= button_to 'Destroy this site', site_path(@site), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to 'Destroy', site_path(@site), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
-    <%= link_to 'Back to sites', sites_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <%= render partial: 'scans/scans', locals: { scans: @site.scans } %>
+
   </div>
+
 </div>

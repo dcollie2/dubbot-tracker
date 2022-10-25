@@ -6,6 +6,14 @@ class ScansController < ApplicationController
     @scans = Scan.most_recent.order(overall_score: :desc).sort_by(&:size_grouping)
   end
 
+  def list
+    column = params[:column] == 'name' ? 'sites.name' : params[:column]
+    # this all seems super dangerous; should cleanse column & direction
+    scans = Scan.joins(:site).most_recent.order("size_group asc, #{params[:column]} #{params[:direction]}")
+    render(partial: 'scans', locals: { scans: scans })
+  end
+
+
   # GET /scans/1 or /scans/1.json
   def show
   end

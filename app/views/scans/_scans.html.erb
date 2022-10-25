@@ -1,18 +1,38 @@
-<div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-10">
+<%= turbo_frame_tag 'scans', class: 'overflow-x-auto relative shadow-md sm:rounded-lg mt-10' do %>
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-white uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
     <tr>
       <th class="py-3 px-6">Batch</th>
       <th class="py-3 px-6">Size Grouping</th>
 <!--      <th class="py-3 px-6">Dubbot Id</th>-->
-      <th class="py-3 px-6">Name</th>
-      <th class="py-3 px-6">Pages</th>
-      <th class="py-3 px-6">Score</th>
-      <th class="py-3 px-6">Broken Links</th>
-      <th class="py-3 px-6">Accessibility Issues</th>
-      <th class="py-3 px-6">Misspellings</th>
+      <th class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+        <%= sort_indicator if params[:column] == "site.name" %>
+        <%= scan_sort_link(column: "sites.name", label: "Name") %>
+      </th>
+      <th class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+        <%= sort_indicator if params[:column] == "pages" %>
+        <%= scan_sort_link(column: "pages", label: "Pages") %>
+      </th>
+      <th class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+        <%= sort_indicator if params[:column] == "overall_score" %>
+        <%= scan_sort_link(column: "overall_score", label: "Score") %>
+      </th>
+      <th class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+        <%= sort_indicator if params[:column] == "broken_links" %>
+        <%= scan_sort_link(column: "broken_links", label: "Broken Links") %>
+      </th>
+      <th class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+        <%= sort_indicator if params[:column] == "accessibility_issues" %>
+        <%= scan_sort_link(column: "accessibility_issues", label: "Accessibility Issues") %>
+      </th>
+      <th class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+        <%= sort_indicator if params[:column] == "misspellings" %>
+        <%= scan_sort_link(column: "misspellings", label: "Misspellings") %>
+      </th>
 <!--      <th class="py-3 px-6">Flagged Words</th>-->
-      <th class="py-3 px-6">Last Crawled On</th>
+      <th class="py-3 px-6">
+        Last Crawled On
+      </th>
       <th class="py-3 px-6"></th>
     </tr>
     </thead>
@@ -22,4 +42,4 @@
     <% end %>
     </tbody>
   </table>
-</div>
+<% end %>
