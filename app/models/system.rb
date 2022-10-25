@@ -7,7 +7,7 @@ class System < ApplicationRecord
   end
 
   def current_overall_score
-    scans.most_recent.average(:overall_score).round(2)
+    scans.most_recent.average(:overall_score).round(2) if scans.most_recent.present?
   end
 
   def current_broken_links
