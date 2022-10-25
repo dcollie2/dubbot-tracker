@@ -1,5 +1,6 @@
 class Scan < ApplicationRecord
   belongs_to :site
+  after_save :set_size_group
 
   class << self
     def most_recent_batch
@@ -20,7 +21,7 @@ class Scan < ApplicationRecord
     end
 
     def cleanse_number(scan, value)
-      scan[value].gsub(',','').to_i if scan[value].present?
+      scan[value].present? ? scan[value].gsub(',','').to_i : 0
     end
 
   end
@@ -28,22 +29,36 @@ class Scan < ApplicationRecord
 
 
   scope :most_recent, -> { where(batch_number: self.most_recent_batch) }
-  scope :in_system, ->  (system_id) { where(system_id: system_id)}
+  scope :in_system, ->  (system_id) { includes(site: :system).where(system: {id: system_id})}
 
   def size_grouping
     if pages > 1000
-      1
+      0
     elsif pages.between?(501,1000)
-      2
+      1
     elsif pages.between?(101,500)
-      3
+      2
     elsif pages.between?(1,100)
-      4
+      3
     elsif pages == 0
-      5
+      4
     else
-      6
+      5
     end
+  end
+
+  def size_group_names
+    %w[large medium small tiny empty error]
+  end
+
+  def size_group_name
+    size_group_names[size_group] if size_group.present?
+  end
+
+  private
+
+  def set_size_group
+    update_column(:size_group, size_grouping)
   end
 
 

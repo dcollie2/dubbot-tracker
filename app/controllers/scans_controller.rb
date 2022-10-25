@@ -1,10 +1,19 @@
 class ScansController < ApplicationController
   before_action :set_scan, only: %i[ show edit update destroy ]
+  before_action :system_check, only: :list
   require 'csv'
   # GET /scans or /scans.json
   def index
-    @scans = Scan.most_recent.order(overall_score: :desc).sort_by(&:size_grouping)
   end
+
+  def list
+    column = params[:column] == 'site_name' ? 'sites.name' : params[:column]
+    # this all seems super dangerous; should cleanse column & direction
+    scans = Scan.joins(:site).most_recent.order(:size_group).order("#{column} #{params[:direction]}")
+    scans = scans.in_system(@system.id) if @system.present?
+    render(partial: 'scans', locals: { scans: scans })
+  end
+
 
   # GET /scans/1 or /scans/1.json
   def show
@@ -76,13 +85,19 @@ class ScansController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_scan
-      @scan = Scan.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_scan
+    @scan = Scan.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def scan_params
-      params.require(:scan).permit(:pages, :overall_score, :broken_links, :accessibility_issues, :misspellings, :flagged_words, :last_crawled_on, :site_id)
-    end
+  def system_check
+    logger.debug("SYSTEM CHECK RUNNING--#{params[:system_id]}--")
+    @system = System.find(params[:system_id]) if params[:system_id].present?
+    logger.debug(@system.present?)
+  end
+
+  # Only allow a list of trusted parameters through.
+  def scan_params
+    params.require(:scan).permit(:pages, :overall_score, :broken_links, :accessibility_issues, :misspellings, :flagged_words, :last_crawled_on, :site_id)
+  end
 end

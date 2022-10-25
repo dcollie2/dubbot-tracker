@@ -4,15 +4,25 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @system %>
+    <%= link_to "View scans on system", scans_path(system_id: @system.id), class: 'rounded-lg py-3 px-5 bg-blue-600 text-white float-right font-medium' %>
+    <h1 class="font-bold text-2xl"><%= link_to "Systems", systems_path %></h1>
+    <h2 class="font-bold text-4xl text-blue-500"><%= @system.name %></h2>
+    <% if @system.notes.present? %>
+      <h3>Notes</h3>
+      <% tag.p notes %>
+    <% end %>
 
-    <%= link_to 'Back to systems', systems_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 
-    <%= render partial: 'sites/sites', locals: { sites: @system.sites } %>
+    <div id="scans" class="min-w-full mt-10">
+      <h3>Sites in System</h3>
+      <%= render partial: 'sites/sites', locals: { sites: @system.sites } %>
+    </div>
 
-
-    <%= render partial: 'scans/scans', locals: { scans: @system.scans.most_recent } %>
-
+    <div id="scans" class="min-w-full mt-10">
+      <h3>Current Scan</h3>
+      <%= turbo_frame_tag 'scans', src: list_scans_url(system_id: @system.id), lazy: true %>
+      <%#= render partial: 'scans/scans', locals: { scans: @system.scans.most_recent, system_id: @system.id } %>
+    </div>
 
   </div>
 </div>
