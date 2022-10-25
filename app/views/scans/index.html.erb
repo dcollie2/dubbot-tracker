@@ -19,7 +19,5 @@
 
   </div>
 
-  <div id="scans" class="min-w-full">
-    <%= render partial: 'scans', locals: { scans: @scans } %>
-  </div>
+  <%= turbo_frame_tag 'scans', src: list_scans_url(system_id: params[:system_id]), loading: :lazy do %><% end %>
 </div>

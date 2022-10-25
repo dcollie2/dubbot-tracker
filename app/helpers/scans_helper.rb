@@ -1,10 +1,7 @@
 module ScansHelper
-  def scan_sort_link(column:, label:)
-    if column == params[:column]
-      link_to(label, list_scans_path(column: column, direction: scan_next_direction))
-    else
-      link_to(label, list_scans_path(column: column, direction: 'desc'))
-    end
+  def scan_sort_link(column:, label:, **options)
+    direction = column == params[:column] ? scan_next_direction : 'desc'
+    link_to(label, list_scans_path(column: column, direction: direction, system_id: options[:system_id]))
   end
 
   def scan_next_direction
