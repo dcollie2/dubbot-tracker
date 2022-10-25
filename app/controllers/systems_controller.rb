@@ -3,7 +3,7 @@ class SystemsController < ApplicationController
 
   # GET /systems or /systems.json
   def index
-    @systems = System.all
+    @systems = System.all.sort_by {|s| s.current_overall_score }.reverse
   end
 
   # GET /systems/1 or /systems/1.json

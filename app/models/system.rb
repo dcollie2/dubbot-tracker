@@ -2,6 +2,8 @@ class System < ApplicationRecord
   has_many :sites, dependent: :nullify
   has_many :scans, through: :sites
 
+  validates :name, uniqueness: true
+
   def current_pages
     scans.most_recent.sum(:pages)
   end
