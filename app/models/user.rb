@@ -3,10 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :trackable, :validatable, :timeoutable
 
-  validates :email, presence: true
+  validates :email, :admin, presence: true
 
   def set_default_role
-    self.role ||= :user
+    self.admin ||= :user
   end
 
+  def admin?
+    self.admin == true
+  end
 end

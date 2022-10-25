@@ -2,11 +2,10 @@
   <%= link_to user.email, user %>
 </td>
 <td class="py-3 px-6">
-  <%= link_to user.admin %>
-  <%#= form_for(user) do |f| %>
-    <%#= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-    <%#= f.submit 'Change Role', :class => 'button-xs' %>
-  <%# end %>
+  <%= form_for(user) do |f| %>
+    <%= f.select(:admin, [false, true]) %>
+    <%= f.submit 'Change Role', :class => 'button-xs' %>
+  <% end %>
 </td>
 <td class="py-3 px-6">
   <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless user == current_user %>
