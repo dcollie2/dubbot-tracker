@@ -33,7 +33,9 @@
       <th class="py-3 px-6">
         Last Crawled On
       </th>
-      <th class="py-3 px-6"></th>
+      <% if user_signed_in? %>
+        <th class="py-3 px-6"></th>
+      <% end %>
     </tr>
     </thead>
     <tbody>

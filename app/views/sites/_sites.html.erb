@@ -7,7 +7,9 @@
       <th scope="col" class="py-3 px-6">Name</th>
       <th scope="col" class="py-3 px-6">URL</th>
       <th scope="col" class="py-3 px-6">Scans</th>
-      <th scope="col" class="py-3 px-6"></th>
+      <% if user_signed_in? %>
+        <th scope="col" class="py-3 px-6"></th>
+      <% end %>
     </tr>
     </thead>
     <tbody>

@@ -1,4 +1,5 @@
 class SitesController < ApplicationController
+  before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_site, only: %i[ show edit update destroy ]
 
   # GET /sites or /sites.json

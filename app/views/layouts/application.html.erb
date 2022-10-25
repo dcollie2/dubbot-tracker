@@ -33,6 +33,10 @@
             <li>
               <%= link_to "Scans", scans_path, class: "block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" %>
             </li>
+            <li>
+              <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } if user_signed_in? %>
+              <%= link_to "Login", new_user_session_path, class: "block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" unless user_signed_in? %>
+            </li>
           </ul>
         </div>
       </div>
