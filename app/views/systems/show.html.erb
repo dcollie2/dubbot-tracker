@@ -12,17 +12,17 @@
       <% tag.p notes %>
     <% end %>
 
-
-    <div id="scans" class="min-w-full mt-10">
-      <h3>Sites in System</h3>
-      <%= render partial: 'sites/sites', locals: { sites: @system.sites } %>
-    </div>
-
     <div id="scans" class="min-w-full mt-10">
       <h3>Current Scan</h3>
       <%= turbo_frame_tag 'scans', src: list_scans_url(system_id: @system.id), lazy: true %>
       <%#= render partial: 'scans/scans', locals: { scans: @system.scans.most_recent, system_id: @system.id } %>
     </div>
+
+    <div id="sites" class="min-w-full mt-10">
+      <h3>Sites in System</h3>
+      <%= render partial: 'sites/sites', locals: { sites: @system.sites } %>
+    </div>
+
 
   </div>
 </div>
