@@ -1,4 +1,5 @@
 class ScansController < ApplicationController
+  before_action :authenticate_user!, except: %i[ index show list ]
   before_action :set_scan, only: %i[ show edit update destroy ]
   before_action :system_check, only: :list
   require 'csv'

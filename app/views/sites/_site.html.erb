@@ -16,7 +16,9 @@
   <td class="py-3 px-6">
     <%= site.scans.size %>
   </td>
-  <td class="py-3 px-6">
-    <%= link_to 'Edit', edit_site_path(site), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-  </td>
+  <% if user_signed_in? %>
+    <td class="py-3 px-6">
+      <%= link_to 'Edit', edit_site_path(site), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    </td>
+  <% end %>
 </tr>
