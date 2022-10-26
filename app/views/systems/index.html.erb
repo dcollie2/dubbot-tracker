@@ -49,7 +49,7 @@
 
   </div>
 
-  <% missing_systems = Site.missing_system %>
+  <% missing_systems = Site.missing_system.omit_homepages %>
   <% if missing_systems.present? %>
     <div id='sites' class="mt-10">
       <h2><%= missing_systems.size %> Sites Without Systems</h2>
