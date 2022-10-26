@@ -48,4 +48,13 @@
     </div>
 
   </div>
+
+  <% missing_systems = Site.missing_system %>
+  <% if missing_systems.present? %>
+    <div id='sites' class="mt-10">
+      <h2><%= missing_systems.size %> Sites Without Systems</h2>
+      <%= render partial: 'sites/sites', locals: { sites: missing_systems } %>
+    </div>
+
+  <% end %>
 </div>

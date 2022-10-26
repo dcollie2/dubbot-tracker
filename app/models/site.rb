@@ -4,4 +4,5 @@ class Site < ApplicationRecord
   validates :dubbot_id, presence: true, uniqueness: true
   delegate :name, to: :system, prefix: true, allow_nil: true
 
+  scope :missing_system, -> { where.missing(:system) }
 end
