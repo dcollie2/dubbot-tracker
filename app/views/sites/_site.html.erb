@@ -14,7 +14,7 @@
     <%= link_to site.name,site_path(site) %>
   </td>
   <td class="py-3 px-6">
-    <%= link_to site.url, site.url, target: '_blank' %>
+    <%= link_to site.url, site.url, target: '_blank' if site.url.present? %>
   </td>
   <td class="py-3 px-6">
     <%= site.last_crawl_at.to_fs(:long) if site.last_crawl_at.present? %>

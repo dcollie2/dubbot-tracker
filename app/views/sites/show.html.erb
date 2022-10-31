@@ -13,7 +13,7 @@
       </div>
       <div class="flex flex-col justify-center items-center border rounded-lg">
         <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">URL</dt>
-        <dd class="text-lg font-semibold"><%= link_to @site.url, @site.url, target: '_blank' %></dd>
+        <dd class="text-lg font-semibold"><%= link_to @site.url, @site.url, target: '_blank' if @site.url.present? %></dd>
       </div>
       <div class="flex flex-col justify-center items-center border rounded-lg">
         <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Last Crawl</dt>
