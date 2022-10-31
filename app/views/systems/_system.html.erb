@@ -6,19 +6,19 @@
     <%= system.sites.size %>
   </td>
   <td class="py-4 px-6">
-    <%= system.current_pages %>
+    <%= number_with_delimiter(system.current_pages) %>
   </td>
   <td class="py-4 px-6">
     <%= system.current_overall_score %>%
   </td>
   <td class="py-4 px-6">
-    <%= system.current_broken_links %>
+    <%= number_with_delimiter(system.current_broken_links) %>
   </td>
   <td class="py-4 px-6">
-    <%= system.current_accessibility_issues %>
+    <%= number_with_delimiter(system.current_accessibility_issues) %>
   </td>
   <td class="py-4 px-6">
-    <%= system.current_misspellings %>
+    <%= number_with_delimiter(system.current_misspellings) %>
   </td>
   <td class="py-4 px-6">
     <%= system.notes %>

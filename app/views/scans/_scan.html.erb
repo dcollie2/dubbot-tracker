@@ -12,25 +12,25 @@
     <%= scan.site.name %>
   </td>
   <td class="py-3 px-6">
-    <%= scan.pages %>
+    <%= number_with_delimiter(scan.pages) %>
   </td>
   <td class="py-3 px-6">
-    <%= scan.overall_score %>
+    <%= scan.overall_score %>%
   </td>
   <td class="py-3 px-6">
-    <%= scan.broken_links %>
+    <%= number_with_delimiter(scan.broken_links) %>
   </td>
   <td class="py-3 px-6">
-    <%= scan.accessibility_issues %>
+    <%= number_with_delimiter(scan.accessibility_issues) %>
   </td>
   <td class="py-3 px-6">
-    <%= scan.misspellings %>
+    <%= number_with_delimiter(scan.misspellings) %>
   </td>
 <!--  <td class="py-3 px-6">-->
     <%#= scan.flagged_words %>
 <!--  </td>-->
   <td class="py-3 px-6">
-    <%= scan.last_crawled_on if scan.last_crawled_on.present? %>
+    <%= scan.site.last_crawl_at.to_fs(:long) if scan.site.last_crawl_at.present? %>
   </td>
   <% if user_signed_in? %>
     <td class="py-3 px-6">
