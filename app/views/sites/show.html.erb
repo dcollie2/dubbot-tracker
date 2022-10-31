@@ -6,17 +6,27 @@
 
     <h1 class="font-bold text-2xl"><%= link_to "Sites", sites_path %></h1>
     <h2 class="font-bold text-4xl text-blue-500"><%= @site.name %></h2>
-    <dl class="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700 mt-5">
-      <div class="flex flex-col pb-3">
+    <dl class="grid grid-cols-2 gap-6 p-4 mx-auto max-w-screen-xl text-gray-900 sm:grid-cols-3 xl:grid-cols-3 dark:text-white sm:p-8">
+      <div class="flex flex-col justify-center items-center border rounded-lg">
         <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">System</dt>
         <dd class="text-lg font-semibold"><%= @site.system_name || "No system identified" %></dd>
       </div>
-      <% if @site.url.present? %>
-        <div class="flex flex-col py-3">
-          <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">URL</dt>
-          <dd class="text-lg font-semibold"><%= @site.url %></dd>
-        </div>
-      <% end %>
+      <div class="flex flex-col justify-center items-center border rounded-lg">
+        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">URL</dt>
+        <dd class="text-lg font-semibold"><%= link_to @site.url, @site.url, target: '_blank' %></dd>
+      </div>
+      <div class="flex flex-col justify-center items-center border rounded-lg">
+        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Last Crawl</dt>
+        <dd class="text-lg font-semibold"><%= @site.last_crawl_at.to_fs(:long) %>%</dd>
+      </div>
+      <div class="flex flex-col justify-center items-center border rounded-lg">
+        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Next Crawl</dt>
+        <dd class="text-lg font-semibold"><%= @site.next_crawl_at.to_fs(:long) %></dd>
+      </div>
+      <div class="flex flex-col justify-center items-center border rounded-lg">
+        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Enabled</dt>
+        <dd class="text-lg font-semibold"><%= @site.enabled %></dd>
+      </div>
     </dl>
 
     <%= link_to 'Edit', edit_site_path(@site), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

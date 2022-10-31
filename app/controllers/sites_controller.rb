@@ -1,6 +1,7 @@
 class SitesController < ApplicationController
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_site, only: %i[ show edit update destroy ]
+  require 'csv'
 
   # GET /sites or /sites.json
   def index
@@ -18,6 +19,21 @@ class SitesController < ApplicationController
 
   # GET /sites/1/edit
   def edit
+  end
+
+  def import_csv
+    if params[:sites_file].present?
+      sites = []
+      file = params[:sites_file]
+      CSV.foreach(file, headers: true) do |row|
+        sites << row.to_h
+        puts row.to_h
+      end
+      Site.import_sites(sites)
+      redirect_to sites_path, notice: "File uploaded"
+    else
+      redirect_to sites_path, notice: "You must upload a suitable CSV file."
+    end
   end
 
   # POST /sites or /sites.json
