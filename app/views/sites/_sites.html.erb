@@ -4,8 +4,11 @@
     <tr>
       <%= content_tag :th, 'System', scope: 'col', class: 'py-3 px-6' unless controller_name == 'systems' %>
       <th scope="col" class="py-3 px-6">Dubbot ID</th>
+      <th scope="col" class="py-3 px-6">Enabled?</th>
       <th scope="col" class="py-3 px-6">Name</th>
       <th scope="col" class="py-3 px-6">URL</th>
+      <th scope="col" class="py-3 px-6">Last Crawl</th>
+      <th scope="col" class="py-3 px-6">Next Crawl</th>
       <th scope="col" class="py-3 px-6">Scans</th>
       <% if user_signed_in? %>
         <th scope="col" class="py-3 px-6"></th>

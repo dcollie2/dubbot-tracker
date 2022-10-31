@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_25_215230) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_144656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_215230) do
     t.string "dubbot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "last_crawl_at"
+    t.datetime "next_crawl_at"
+    t.boolean "enabled"
   end
 
   create_table "systems", force: :cascade do |t|

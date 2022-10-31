@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :systems
-  resources :sites
+  resources :sites do
+    collection do
+      post :import_csv
+    end
+  end
   resources :scans do
     collection do
       post :import_csv
