@@ -17,10 +17,10 @@
     <%= link_to site.url, site.url, target: '_blank' %>
   </td>
   <td class="py-3 px-6">
-    <%= site.last_crawl_at.to_fs(:long) %>
+    <%= site.last_crawl_at.to_fs(:long) if site.last_crawl_at.present? %>
   </td>
   <td class="py-3 px-6">
-    <%= site.next_crawl_at.to_fs(:long) %>
+    <%= site.next_crawl_at.to_fs(:long) if site.next_crawl_at.present? %>
   </td>
   <td class="py-3 px-6">
     <%= site.scans.size %>
