@@ -27,10 +27,18 @@ class System < ApplicationRecord
   end
 
   def broken_links_per_page
-    current_broken_links.to_f / current_pages.to_f  if current_broken_links > 0 && current_pages > 0
+    if current_broken_links > 0 && current_pages > 0
+      current_broken_links.to_f / current_pages.to_f
+    else
+      0
+    end
   end
 
   def accessibility_issues_per_page
-    current_accessibility_issues.to_f / current_pages.to_f  if current_accessibility_issues > 0 && current_pages > 0
+    if current_accessibility_issues > 0 && current_pages > 0
+      current_accessibility_issues.to_f / current_pages.to_f
+    else
+      0
+    end
   end
 end
