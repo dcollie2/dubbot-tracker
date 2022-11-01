@@ -25,4 +25,12 @@ class System < ApplicationRecord
   def current_misspellings
     scans.most_recent.sum(:misspellings) || 0
   end
+
+  def broken_links_per_page
+    current_broken_links.to_f / current_pages.to_f  if current_broken_links > 0 && current_pages > 0
+  end
+
+  def accessibility_issues_per_page
+    current_accessibility_issues.to_f / current_pages.to_f  if current_accessibility_issues > 0 && current_pages > 0
+  end
 end

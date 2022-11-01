@@ -7,6 +7,7 @@
 
   <div id="systems" class="mt-5">
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-10">
+      <%= batch_date_header %>
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5">
         <thead class="text-xs text-white uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -26,13 +27,16 @@
             Broken Links
           </th>
           <th scope="col" class="py-3 px-6">
+            Broken Links Per Page
+          </th>
+          <th scope="col" class="py-3 px-6">
             Accessibility Issues
           </th>
           <th scope="col" class="py-3 px-6">
-            Misspellings
+            Accessibility Issues Per Page
           </th>
           <th scope="col" class="py-3 px-6">
-            Notes
+            Misspellings
           </th>
           <% if user_signed_in? %>
             <th scope="col" class="py-3 px-6">

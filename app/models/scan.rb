@@ -10,6 +10,10 @@ class Scan < ApplicationRecord
       most_recent_batch + 1
     end
 
+    def most_recent_batch_date
+      self.maximum(:created_at)
+    end
+
     def import_scans(scans)
       batch_number = Scan.new_batch_number
       scans.each do |scan|
