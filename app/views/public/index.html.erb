@@ -1,5 +1,8 @@
 <div>
-  <h1 class="font-bold text-4xl">System Site Share</h1>
+  <h1 class="font-bold text-4xl">Systems Comparison</h1>
+  <h2>Systems by Site Count</h2>
   <%= pie_chart System.joins(:sites).group(:name).count, label: 'value', width: "800px", height: "500px" %>
+  <h2>Systems by Page Count</h2>
+  <%= pie_chart System.all.collect { |s| [s.name, s.pages] }, label: 'value', width: "800px", height: "500px" %>
 
 </div>

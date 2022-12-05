@@ -14,6 +14,10 @@ class System < ApplicationRecord
     score
   end
 
+  def pages
+    sites.sum(&:current_page_count)
+  end
+
   def current_broken_links
     scans.most_recent.sum(:broken_links) || 0
   end

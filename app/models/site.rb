@@ -7,6 +7,9 @@ class Site < ApplicationRecord
   scope :missing_system, -> { where.missing(:system) }
   scope :omit_homepages, -> { where("lower(sites.name) not like '%homepage%' and lower(sites.name) not like '%home page%'")}
 
+  def current_page_count
+    scans.blank? ? 0 : scans.order(:created_at).last.pages
+  end
   class << self
     def import_sites(sites)
       sites.each do |site|
