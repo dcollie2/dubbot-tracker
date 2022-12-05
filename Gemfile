@@ -27,6 +27,8 @@ gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
 
+gem 'chartkick'
+
 # Authentication
 gem 'devise'
 
